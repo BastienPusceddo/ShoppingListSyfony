@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\ListeCourse;
+use App\Form\ListeCourseType;
 use App\Repository\ListeCourseRepository;
-use http\Client\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -28,7 +29,7 @@ class ListeCourseController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $listeCourseRepository->save($listeCourse, true);
 
-            return $this->redirectToRoute('app_listCourse', ["id"=>$listeCourse->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_listeCourse', ["id"=>$listeCourse->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('liste_course/edit.html.twig', [

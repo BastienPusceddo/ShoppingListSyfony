@@ -26,15 +26,15 @@
             <td>{% for article in listeCourse.detailsArticles %}
                 <p>{{ article.getArticle().getNom() }}</p>
                 {% else %}
-                aucun article
+                Aucun Article
                 {% endfor %}
             </td>
         </tr>
         </tbody>
     </table>
 
-    <a href="">retour</a>
+    <a href="{{ path('home') }}">Retour</a>
 
-    <a href="{{ path('app_listeCourse_edit', {'id': listeCourse.id}) }}">modifier</a>
+    <a href="{{ path('app_listeCourse_edit', {'id': listeCourse.id}) }}">Modifier</a>
 </div>
 {% endblock %}
