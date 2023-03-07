@@ -25,6 +25,9 @@ class ListeCourse
     #[ORM\OneToMany(mappedBy: 'listeCourse', targetEntity: DetailsArticle::class)]
     private Collection $detailsArticles;
 
+    #[ORM\ManyToOne(inversedBy: 'listesDeCourses')]
+    private ?Utilisateur $utilisateur = null;
+
     public function __construct()
     {
         $this->detailsArticles = new ArrayCollection();
@@ -85,6 +88,18 @@ class ListeCourse
                 $detailsArticle->setListeCourse(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?Utilisateur $utilisateur): self
+    {
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }
