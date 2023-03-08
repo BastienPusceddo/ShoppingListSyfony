@@ -6,14 +6,16 @@
 
 <div class="homeContent w-100 h-100">
     <div class="title bg-primary fw-bold">
-        <h1 class="text-white p-3">Hello {{ user.nom }} !</h1>
+        <h1 class="text-white p-3">Hello {{ user.prenom }} {{ user.nom }} !</h1>
     </div>
     <div class="d-flex flex-column p-5 h-100">
         <div class="d-flex flex-row justify-content-sm-between align-items-center w-100">
             <h2>Vos listes</h2>
             <a href="{{ path('app_liste_course_new') }}" type="button" class="btn btn-primary">Créer une liste</a>
         </div>
-        <table class="table  bg-primary-subtle rounded">
+
+        <div class="card border-0  shadow mt-2">
+        <table class="table bg-primary-subtle m-0 ">
             {% if user.listesDeCourses|length != 0 %}
                 <tr>
                     <th scope="col">#</th>
@@ -25,7 +27,7 @@
                     <tr>
                         <th scope="row">{{ i }}</th>
                         <td>{{ liste_course.nom }}</td>
-                        <td><a href="{{ path('app_liste_course_edit',{"id":liste_course.id}) }}" type="button" class="btn btn-outline-secondary">Detail</a></td>
+                        <td><a href="{{ path('app_liste_course_edit',{"id":liste_course.id}) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-tools"></i></a></td>
                     </tr>
                 {% endfor %}
             {% else %}
@@ -34,6 +36,9 @@
             </tr>
             {% endif %}
         </table>
+        </div>
+
     </div>
+
 </div>
 {% endblock %}
