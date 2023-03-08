@@ -11,7 +11,7 @@
     <div class="d-flex flex-column p-5 h-100">
         <div class="d-flex flex-row justify-content-sm-between align-items-center w-100">
             <h2>Vos listes</h2>
-            <a href="" type="button" class="btn btn-primary">Créer une liste</a>
+            <a href="{{ path('app_liste_course_new') }}" type="button" class="btn btn-primary">Créer une liste</a>
         </div>
         <table class="table  bg-primary-subtle rounded">
             {% if user.listesDeCourses|length != 0 %}
@@ -20,12 +20,12 @@
                     <th scope="col">Nom liste</th>
                     <th scope="col">Outils</th>
                 </tr>
-                {% for liste in user.listesDeCourses %}
+                {% for liste_course in user.listesDeCourses %}
                     {% set i = 1 %}
                     <tr>
                         <th scope="row">{{ i }}</th>
-                        <td>{{ liste.nom }}</td>
-                        <td><a href="" type="button" class="btn btn-secondary">Détail</a> <a href="" type="button" class="btn btn-danger">supprimer</a></td>
+                        <td>{{ liste_course.nom }}</td>
+                        <td><a href="{{ path('app_liste_course_edit',{"id":liste_course.id}) }}" type="button" class="btn btn-outline-secondary">Detail</a></td>
                     </tr>
                 {% endfor %}
             {% else %}

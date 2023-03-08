@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modification Liste{% endblock %}
+{% block title %}Edit ListeCourse{% endblock %}
 
 {% block body %}
-    <h1>Modification</h1>
+    <h1>Edit ListeCourse</h1>
 
-    {{ include('liste_course/_form.html.twig', {'button_label': 'Valider'}) }}
+    {{ include('liste_course/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_listeCourse',{'id':listeCourse.id}) }}">Retour</a>
+    <a href="{{ path('app_home') }}">back to list</a>
 
     {{ include('liste_course/_delete_form.html.twig') }}
 {% endblock %}
