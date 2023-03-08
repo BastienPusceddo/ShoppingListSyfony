@@ -24,9 +24,11 @@
         <input type="hidden" name="_csrf_token"
             value="{{ csrf_token('authenticate') }}"
         >
-        <button class="btn btn-lg btn-secondary w-75 m-5 " type="submit">
+        <button class="btn btn-lg btn-secondary w-75 mt-5 " type="submit">
             Sign in
         </button>
+
+        <a href="/register" class=" pulse text-info mb-2">or register now if you are new</a>
     </div>
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
