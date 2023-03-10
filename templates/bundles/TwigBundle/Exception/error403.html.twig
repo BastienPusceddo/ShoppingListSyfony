@@ -1,0 +1,20 @@
+{# templates/bundles/TwigBundle/Exception/error403.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class=" vh-100 d-flex flex-column  justify-content-center align-items-center">
+        <div class="d-flex flex-column  justify-content-center align-items-center  rounded w-50 bg-danger text-white">
+            <h1>Acces denied</h1>
+
+            <p class="d-flex flex-column  justify-content-center align-items-center">
+            <section>
+                You cannot access this page
+            </section>
+            <section>
+                <a href="{{ path('app_home') }}">return to the home page</a>
+            </section>
+            </p>
+        </div>
+    </div>
+{% endblock %}
