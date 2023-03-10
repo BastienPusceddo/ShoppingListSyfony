@@ -3,11 +3,19 @@
 {% block title %}Edit ListeCourse{% endblock %}
 
 {% block body %}
+
+<div class=" vh-100 d-flex flex-column  justify-content-center align-items-center">
+    <div class="d-flex flex-column  justify-content-center align-items-center  rounded w-50 bg-primary text-white">
     <h1>Edit ListeCourse</h1>
 
     {{ include('liste_course/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_home') }}">back to list</a>
+
 
     {{ include('liste_course/_delete_form.html.twig') }}
+
+        <a href="{{ path('app_home') }}" class="pulse text-info mb-2">back to list</a>
+
+    </div>
+</div>
 {% endblock %}
