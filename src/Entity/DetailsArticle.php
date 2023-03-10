@@ -28,6 +28,9 @@ class DetailsArticle
     #[ORM\ManyToOne(inversedBy: 'detailsArticles')]
     private ?ListeCourse $listeCourse = null;
 
+    #[ORM\Column]
+    private ?bool $estImportant = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -96,5 +99,17 @@ class DetailsArticle
     public function __toString(): string
     {
         return $this->article->getNom();
+    }
+
+    public function isEstImportant(): ?bool
+    {
+        return $this->estImportant;
+    }
+
+    public function setEstImportant(bool $estImportant): self
+    {
+        $this->estImportant = $estImportant;
+
+        return $this;
     }
 }
