@@ -14,7 +14,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('nom')
             ->add('prixUnitaire')
-            ->add('types')
+            ->add('type')
         ;
     }
 
