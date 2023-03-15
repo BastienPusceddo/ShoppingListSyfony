@@ -22,7 +22,7 @@ class DetailsArticle
     #[ORM\Column]
     private ?bool $estAcheté = null;
 
-    #[ORM\ManyToOne(inversedBy: 'detailsArticles')]
+    #[ORM\ManyToOne()]
     private ?Article $article = null;
 
     #[ORM\ManyToOne(inversedBy: 'detailsArticles')]

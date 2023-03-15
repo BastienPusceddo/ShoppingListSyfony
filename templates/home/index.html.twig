@@ -27,7 +27,10 @@
                     <tr>
                         <th scope="row">{{ i }}</th>
                         <td>{{ liste_course.nom }}</td>
-                        <td><a href="{{ path('app_liste_course_edit',{"id":liste_course.id}) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-tools"></i></a></td>
+                        <td>
+                            <a href="{{ path('app_liste_course_edit',{"id":liste_course.id}) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-tools"></i></a>
+                            <a href="{{ path('app_liste_article', {"id":liste_course.id}) }}">info</a>
+                        </td>
                     </tr>
                 {% endfor %}
             {% else %}
