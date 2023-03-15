@@ -31,6 +31,7 @@ class ListeCourse
     public function __construct()
     {
         $this->detailsArticles = new ArrayCollection();
+        $this->date = new \DateTime('now');
     }
 
     public function getId(): ?int
