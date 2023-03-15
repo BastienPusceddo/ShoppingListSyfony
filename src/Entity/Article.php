@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -21,13 +19,9 @@ class Article
     #[ORM\Column]
     private ?float $prixUnitaire = null;
 
-    #[ORM\ManyToMany(targetEntity: Type::class, mappedBy: 'articles')]
-    private Collection $types;
-
-    public function __construct()
-    {
-        $this->types = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Type $type = null;
 
     public function getId(): ?int
     {
@@ -58,35 +52,20 @@ class Article
         return $this;
     }
 
-    /**
-     * @return Collection<int, Type>
-     */
-    public function getTypes(): Collection
-    {
-        return $this->types;
-    }
-
-    public function addType(Type $type): self
-    {
-        if (!$this->types->contains($type)) {
-            $this->types->add($type);
-            $type->addArticle($this);
-        }
-
-        return $this;
-    }
-
-    public function removeType(Type $type): self
-    {
-        if ($this->types->removeElement($type)) {
-            $type->removeArticle($this);
-        }
-
-        return $this;
-    }
-
     public function __toString(): string
     {
         return $this->nom;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }

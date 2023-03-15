@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Type index{% endblock %}
+{% block title %}Type{% endblock %}
 
 {% block body %}
-    <h1>Type index</h1>
+    <h1>Liste des types</h1>
 
     <table class="table">
         <thead>
@@ -19,17 +19,18 @@
                 <td>{{ type.id }}</td>
                 <td>{{ type.nom }}</td>
                 <td>
-                    <a href="{{ path('app_type_show', {'id': type.id}) }}">show</a>
-                    <a href="{{ path('app_type_edit', {'id': type.id}) }}">edit</a>
+                    <a href="{{ path('admin_type_show', {'id': type.id}) }}">Détail</a>
+                    <a href="{{ path('admin_type_edit', {'id': type.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucun type</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_type_new') }}">Create new</a>
+    <a href="{{ path('admin_type_new') }}">Nouveau type</a>
+    <a href="{{ path('admin_index') }}">Retour</a>
 {% endblock %}

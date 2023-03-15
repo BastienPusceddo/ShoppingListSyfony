@@ -18,7 +18,7 @@ class Type
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\ManyToMany(targetEntity: Article::class, inversedBy: 'types')]
+    #[ORM\OneToMany(mappedBy: 'type', targetEntity: Article::class)]
     private Collection $articles;
 
     public function __construct()
@@ -43,6 +43,11 @@ class Type
         return $this;
     }
 
+    public function __toString(): string
+    {
+        return $this->nom;
+    }
+
     /**
      * @return Collection<int, Article>
      */
@@ -55,6 +60,7 @@ class Type
     {
         if (!$this->articles->contains($article)) {
             $this->articles->add($article);
+            $article->setType($this);
         }
 
         return $this;
@@ -62,13 +68,13 @@ class Type
 
     public function removeArticle(Article $article): self
     {
-        $this->articles->removeElement($article);
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getType() === $this) {
+                $article->setType(null);
+            }
+        }
 
         return $this;
-    }
-
-    public function __toString(): string
-    {
-        return $this->nom;
     }
 }
