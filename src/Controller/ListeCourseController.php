@@ -50,6 +50,7 @@ class ListeCourseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $listeCourseRepository->save($listeCourse, true);
 
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);

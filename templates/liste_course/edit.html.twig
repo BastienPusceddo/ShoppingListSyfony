@@ -3,8 +3,10 @@
 {% block title %}Edit ListeCourse{% endblock %}
 
 {% block body %}
+    {#    header#}
+    {{ include('utilitaire/header.html.twig') }}
 
-<div class=" vh-100 d-flex flex-column  justify-content-center align-items-center">
+<div class=" vh-75 mt-5 d-flex flex-column  justify-content-center align-items-center">
     <div class="d-flex flex-column  justify-content-center align-items-center  rounded w-50 bg-primary text-white">
     <h1>Edit ListeCourse</h1>
 
@@ -18,4 +20,7 @@
 
     </div>
 </div>
+
+    {#    footer#}
+    {{ include('utilitaire/footer.html.twig') }}
 {% endblock %}
