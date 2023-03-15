@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AboutController!{% endblock %}
+
+{% block body %}
+
+    {#    header #}
+    {{ include('utilitaire/header.html.twig') }}
+    <div class="vh-100 d-flex flex-column p-5 h-100 mb-5 align-items-center justify-content-center">
+
+        <div class="card border-0  shadow mt-2 align-items-center justify-content-center w-50">
+            <h1 class="mt-5">A propos</h1>
+            <p class="m-3">
+                Nous sommes une startup passionnée par la création de solutions numériques pour faciliter la vie
+                quotidienne des gens. Notre produit phare est un site web de liste de courses qui vous permet
+                de créer et de gérer facilement des listes de courses en ligne.
+            </p>
+            <p class="m-3">
+                Notre équipe se compose de développeurs expérimentés, de designers talentueux et de professionnels
+                de la gestion de projet, tous déterminés à créer une expérience utilisateur exceptionnelle pour
+                nos utilisateurs.
+            </p>
+            <p class="m-3">
+                Nous sommes convaincus que notre site web de liste de courses peut aider les gens à économiser du
+                temps et de l'argent en leur permettant de mieux planifier leurs achats. Nous croyons également
+                qu'il peut aider les familles à mieux communiquer et à travailler ensemble pour atteindre leurs
+                objectifs de consommation.
+            </p>
+            <p class="m-3">
+                Notre objectif est de rendre la planification des courses aussi simple et agréable que possible pour nos
+                utilisateurs. Nous sommes impatients de vous accompagner dans votre parcours d'achat et de vous aider
+                à tirer le meilleur parti de notre site web de liste de courses. Merci de nous faire confiance !
+            </p>
+
+        </div>
+    </div>
+    {#    footer #}
+    {{ include('utilitaire/footer.html.twig') }}
+{% endblock %}

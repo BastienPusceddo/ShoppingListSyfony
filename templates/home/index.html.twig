@@ -24,9 +24,9 @@
                     <th scope="col">Outils</th>
                 </tr>
                 {% for liste_course in user.listesDeCourses %}
-                    {% set i = 1 %}
+                    {% set counter = ( counter | default(0) ) + 1 %}
                     <tr>
-                        <th scope="row">{{ i }}</th>
+                        <th scope="row">{{ counter }}</th>
                         <td>{{ liste_course.nom }}</td>
                         <td><a href="{{ path('app_liste_course_edit',{"id":liste_course.id}) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-tools"></i></a></td>
                     </tr>
