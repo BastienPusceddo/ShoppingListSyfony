@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230308180259 extends AbstractMigration
+final class Version20230315165803 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,7 +21,7 @@ final class Version20230308180259 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE article (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) NOT NULL, prix_unitaire DOUBLE PRECISION NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE details_article (id INT AUTO_INCREMENT NOT NULL, article_id INT DEFAULT NULL, liste_course_id INT DEFAULT NULL, quantité INT NOT NULL, prix DOUBLE PRECISION NOT NULL, est_acheté TINYINT(1) NOT NULL, est_important TINYINT(1) NOT NULL, INDEX IDX_E46977777294869C (article_id), INDEX IDX_E46977774680FCB (liste_course_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE details_article (id INT AUTO_INCREMENT NOT NULL, article_id INT DEFAULT NULL, liste_course_id INT DEFAULT NULL, quantite INT NOT NULL, prix DOUBLE PRECISION NOT NULL, est_achete TINYINT(1) NOT NULL, est_important TINYINT(1) NOT NULL, INDEX IDX_E46977777294869C (article_id), INDEX IDX_E46977774680FCB (liste_course_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE liste_course (id INT AUTO_INCREMENT NOT NULL, utilisateur_id INT DEFAULT NULL, nom VARCHAR(255) NOT NULL, date DATE NOT NULL, INDEX IDX_27EF1A82FB88E14F (utilisateur_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE type (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE type_article (type_id INT NOT NULL, article_id INT NOT NULL, INDEX IDX_2A1B6193C54C8C93 (type_id), INDEX IDX_2A1B61937294869C (article_id), PRIMARY KEY(type_id, article_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
