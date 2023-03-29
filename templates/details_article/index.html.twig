@@ -26,7 +26,7 @@
         {% for article in listeCourse.detailsArticles %}
         <tr>
             <td>{{ article.article.nom }}</td>
-            <td>{{ article.prix }}</td>
+            <td>{{ article.prix }}€</td>
             <td>{{ article.quantite }}</td>
             {% if article.estImportant == 1 %}
                 <td>oui</td>
@@ -48,5 +48,12 @@
         </tr>
         {% endfor %}
     </table>
+    <div>
+        {% if totalPrix != null or maxPrix != null or minPrix!= null %}
+            <p>Prix total : {{ totalPrix }}€</p>
+            <p>Prix max : {{ maxPrix[0][0] }}€ | Article : {{ minPrix[0][1] }}</p>
+            <p>Prix min : {{ minPrix[0][0] }}€ | Article : {{ minPrix[0][1] }}</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

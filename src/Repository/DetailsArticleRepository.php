@@ -38,6 +38,36 @@ class DetailsArticleRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function totalPrix($listeCourse):float|null
+    {
+        return $this->getEntityManager()->getConnection()->prepare(
+            'SELECT SUM(prix_unitaire * quantite) 
+                    FROM details_article 
+                    join Article on article_id=article.id
+                    WHERE liste_course_id = :id'
+            )->executeQuery(['id' => $listeCourse->getId()])->fetchOne();
+    }
+
+    public function maxPrix($listeCourse):array|null
+    {
+        return $this->getEntityManager()->getConnection()->prepare(
+            'SELECT MAX(prix_unitaire * quantite), article.nom
+                    FROM details_article
+                    join Article on article_id=article.id
+                    WHERE liste_course_id = :id
+                    group by article.nom'
+        )->executeQuery(['id' => $listeCourse->getId()])->fetchAllNumeric();
+    }
+    public function minPrix($listeCourse):array|null
+    {
+        return $this->getEntityManager()->getConnection()->prepare(
+            'SELECT MIN(prix_unitaire * quantite), article.nom
+                    FROM details_article
+                    join Article on article_id=article.id
+                    WHERE liste_course_id = :id
+                    group by article.nom'
+        )->executeQuery(['id' => $listeCourse->getId()])->fetchAllNumeric();
+    }
 
 //    /**
 //     * @return DetailsArticle[] Returns an array of DetailsArticle objects

@@ -15,9 +15,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class DetailsArticleController extends AbstractController
 {
     #[Route('/{id}', name: 'app_liste_article', methods: ['GET'])]
-    public function index(ListeCourse $listeCourse): Response
+    public function index(ListeCourse $listeCourse,DetailsArticleRepository $detailsArticleRepository): Response
     {
+        $totalPrix = $detailsArticleRepository->totalPrix($listeCourse);
+        $maxPrix = $detailsArticleRepository->maxPrix($listeCourse);
+        $minPrix = $detailsArticleRepository->minPrix($listeCourse);
         return $this->render('details_article/index.html.twig', [
+            'minPrix' => $minPrix,
+            'maxPrix' => $maxPrix,
+            'totalPrix' => $totalPrix,
             'listeCourse' => $listeCourse
         ]);
     }
