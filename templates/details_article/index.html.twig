@@ -21,10 +21,11 @@
             <th scope="col">Quantité</th>
             <th scope="col">important </th>
             <th scope="col">Acheter</th>
+            <th scope="col"></th>
         </tr>
         {% for article in listeCourse.detailsArticles %}
         <tr>
-            <td>{{ article.getArticle().nom }}</td>
+            <td>{{ article.article.nom }}</td>
             <td>{{ article.prix }}</td>
             <td>{{ article.quantite }}</td>
             {% if article.estImportant == 1 %}
@@ -40,6 +41,9 @@
                         <input class="btn btn-primary" type="submit" name="acheter" value="oui" >
                     {% endif %}
                 </form>
+            </td>
+            <td>
+                {{ include('details_article/_delete_form.html.twig', {'id': article.id}) }}
             </td>
         </tr>
         {% endfor %}
