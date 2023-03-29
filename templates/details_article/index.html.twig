@@ -10,8 +10,10 @@
 
 <div class="example-wrapper">
     <h1>{{ listeCourse.nom }}</h1>
-    <a type="button" class="btn btn-primary" href="{{ path('app_details_article_new',{"id":listeCourse.id})}}">Ajouter un article</a>
-    <a type="button" class="btn btn-primary" href="{{ path('app_home') }}">Retour</a>
+    <div class="d-flex justify-content-sm-around">
+        <a type="button" class="btn btn-primary" href="{{ path('app_details_article_new',{"id":listeCourse.id})}}">Ajouter un article</a>
+        <a type="button" class="btn btn-primary" href="{{ path('app_home') }}">Retour</a>
+    </div>
     <table class="table bg-primary-subtle m-0 ">
         <tr>
             <th scope="col">Nom article</th>
@@ -30,7 +32,15 @@
             {% else %}
                 <td>non</td>
             {% endif %}
-                <td><input type="checkbox"></td>
+            <td>
+                <form method="post" action="{{ path('app_details_article_achete',{'id':article.id}) }}">
+                    {% if article.estAchete == false %}
+                        <input class="btn btn-primary" type="submit" name="acheter" value="non" >
+                    {% else %}
+                        <input class="btn btn-primary" type="submit" name="acheter" value="oui" >
+                    {% endif %}
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </table>

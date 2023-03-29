@@ -79,4 +79,11 @@ class DetailsArticleController extends AbstractController
 
         return $this->redirectToRoute('app_details_article_index', [], Response::HTTP_SEE_OTHER);
     }
+    #[Route('/{id}/achete', name: 'app_details_article_achete', methods: ['POST'])]
+    public function updateAchete(DetailsArticle $detailsArticle, DetailsArticleRepository $detailsArticleRepository): Response
+    {
+        $detailsArticle->setEstAchete(!$detailsArticle->isEstAchete());
+        $detailsArticleRepository->save($detailsArticle, true);
+        return $this->redirectToRoute('app_liste_article', ["id"=>$detailsArticle->getListeCourse()->getId()], Response::HTTP_SEE_OTHER);
+    }
 }
