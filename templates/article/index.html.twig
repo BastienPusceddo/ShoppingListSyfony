@@ -3,32 +3,44 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Liste des articles</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.nom }}</td>
-                <td>
-                    <a href="{{ path('admin_article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('admin_article_edit', {'id': article.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aucun article</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{#    {{ include('utilitaire/header.html.twig') }}#}
+    <div class="homeContent w-100 h-100">
+        <div class="d-flex flex-column p-5 h-100">
+            <div class="d-flex flex-row justify-content-sm-between align-items-center w-100">
+                <h1>Liste des articles</h1>
+            </div>
 
-    <a href="{{ path('admin_article_new') }}">Nouvel article</a>
-    <a href="{{ path('admin_index') }}">Retour</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.nom }}</td>
+                        <td>
+                            <a href="{{ path('admin_article_show', {'id': article.id}) }}" class="btn btn-primary">Détail</a>
+                            <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="btn btn-primary">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucun article</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div>
+                <a href="{{ path('admin_article_new')}}" class="btn btn-primary">Nouvel article</a>
+                <a href="{{ path('admin_index') }}" class="btn btn-primary">Retour</a>
+            </div>
+
+        </div>
+    </div>
+{#    {{ include('utilitaire/footer.html.twig') }}#}
 {% endblock %}

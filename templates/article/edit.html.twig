@@ -3,11 +3,14 @@
 {% block title %}Edition{% endblock %}
 
 {% block body %}
-    <h1>Éditer l'Article</h1>
+<div class=" vh-100 d-flex flex-column  justify-content-center align-items-center">
+    <div class="d-flex flex-column pt-3 justify-content-center align-items-center  rounded w-25 bg-primary text-white">
+        <h1>Éditer l'Article</h1>
 
-    {{ include('article/_form.html.twig', {'button_label': 'Valider'}) }}
+        {{ include('article/_form.html.twig', {'button_label': 'Valider'}) }}
+        {{ include('article/_delete_form.html.twig') }}
+        <a href="{{ path('admin_article_index') }}" class="pulse text-info mb-2">Retour à la liste</a>
 
-    <a href="{{ path('admin_article_index') }}">back to list</a>
-
-    {{ include('article/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}
