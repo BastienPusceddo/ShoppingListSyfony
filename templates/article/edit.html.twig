@@ -3,7 +3,8 @@
 {% block title %}Edition{% endblock %}
 
 {% block body %}
-<div class=" vh-100 d-flex flex-column  justify-content-center align-items-center">
+    {{ include('utilitaire/headerAdmin.html.twig') }}
+<div class="m-5 h-100 d-flex flex-column  justify-content-center align-items-center">
     <div class="d-flex flex-column pt-3 justify-content-center align-items-center  rounded w-25 bg-primary text-white">
         <h1>Éditer l'Article</h1>
 
@@ -13,4 +14,6 @@
 
     </div>
 </div>
+
+    {{ include('utilitaire/footerAdmin.html.twig') }}
 {% endblock %}
