@@ -52,21 +52,27 @@ class DetailsArticleRepository extends ServiceEntityRepository
     public function maxPrix($listeCourse):array|null
     {
         return $this->getEntityManager()->getConnection()->prepare(
-            'SELECT prix_unitaire * quantite,article.nom
+            'SELECT prix_unitaire * quantite, article.nom
                     FROM `details_article` 
                     JOIN article on article_id=article.id
-                    WHERE liste_course_id = :id and (prix_unitaire * quantite) = 
-                    (SELECT MAX(prix_unitaire * quantite) FROM `details_article`);'
+                    WHERE (prix_unitaire * quantite) = 
+                    (SELECT MAX(prix_unitaire * quantite) FROM `details_article`
+                     JOIN article on article_id=article.id
+                     where liste_course_id = :id)
+                    AND liste_course_id = :id'
         )->executeQuery(['id' => $listeCourse->getId()])->fetchAllNumeric();
     }
     public function minPrix($listeCourse):array|null
     {
         return $this->getEntityManager()->getConnection()->prepare(
-            'SELECT MIN(prix_unitaire * quantite), article.nom
-                    FROM details_article
-                    join Article on article_id=article.id
-                    WHERE liste_course_id = :id
-                    group by article.nom'
+            'SELECT prix_unitaire * quantite, article.nom
+                    FROM `details_article` 
+                    JOIN article on article_id=article.id
+                    WHERE (prix_unitaire * quantite) = 
+                    (SELECT MIN(prix_unitaire * quantite) FROM `details_article`
+                     JOIN article on article_id=article.id
+                     where liste_course_id = :id)
+                    AND liste_course_id = :id'
         )->executeQuery(['id' => $listeCourse->getId()])->fetchAllNumeric();
     }
     public function moyPrix($listeCourse):float|null
