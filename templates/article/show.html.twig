@@ -3,6 +3,7 @@
 {% block title %}Détail{% endblock %}
 
 {% block body %}
+    {{ include('utilitaire/headerAdmin.html.twig') }}
 <div class="w-100 h-100">
     <div class="d-flex flex-column p-5 h-100">
         <h1>Détail de l'article</h1>
@@ -33,4 +34,5 @@
         </div>
     </div>
 </div>
+    {{ include('utilitaire/footerAdmin.html.twig') }}
 {% endblock %}

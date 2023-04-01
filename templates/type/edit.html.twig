@@ -3,8 +3,9 @@
 {% block title %}Modification{% endblock %}
 
 {% block body %}
-<div class=" vh-100 d-flex flex-column  justify-content-center align-items-center">
-    <div class="d-flex flex-column pt-3 justify-content-center align-items-center  rounded w-25 bg-primary text-white">
+    {{ include('utilitaire/headerAdmin.html.twig') }}
+<div class="m-5 h-100 d-flex flex-column  justify-content-center align-items-center">
+    <div class="d-flex flex-column p-1 justify-content-center align-items-center  rounded w-25 bg-primary text-white">
         <h1>Modification du type</h1>
 
         {{ include('type/_form.html.twig', {'button_label': 'Update'}) }}
@@ -15,4 +16,5 @@
 
     </div>
 </div>
+    {{ include('utilitaire/footerAdmin.html.twig') }}
 {% endblock %}
