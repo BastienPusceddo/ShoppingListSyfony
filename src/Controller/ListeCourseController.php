@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ListeCourse;
 use App\Form\ListeCourse1Type;
+use App\Repository\DetailsArticleRepository;
 use App\Repository\ListeCourseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -62,9 +63,10 @@ class ListeCourseController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_liste_course_delete', methods: ['POST'])]
-    public function delete(Request $request, ListeCourse $listeCourse, ListeCourseRepository $listeCourseRepository): Response
+    public function delete(Request $request, ListeCourse $listeCourse, ListeCourseRepository $listeCourseRepository,DetailsArticleRepository $detailsArticleRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$listeCourse->getId(), $request->request->get('_token'))) {
+            $detailsArticleRepository->deleteByListeCourse($listeCourse);
             $listeCourseRepository->remove($listeCourse, true);
         }
 

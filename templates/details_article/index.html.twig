@@ -3,12 +3,8 @@
 {% block title %}Liste article{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
+<div class="p-5">
     <h1>{{ listeCourse.nom }}</h1>
     <div class="d-flex justify-content-sm-around">
         <a type="button" class="btn btn-primary" href="{{ path('app_details_article_new',{"id":listeCourse.id})}}">Ajouter un article</a>
@@ -48,11 +44,19 @@
         </tr>
         {% endfor %}
     </table>
-    <div>
+    <div class="d-flex justify-content-around align-items-center bg-primary text-white rounded">
         {% if totalPrix != null or maxPrix != null or minPrix!= null %}
-            <p>Prix total : {{ totalPrix }}€</p>
-            <p>Prix max : {{ maxPrix[0][0] }}€ | Article : {{ minPrix[0][1] }}</p>
-            <p>Prix min : {{ minPrix[0][0] }}€ | Article : {{ minPrix[0][1] }}</p>
+            <h4 class="m-0">Statistiques de votre liste</h4>
+            <p class="m-0">Prix total : {{ totalPrix }}€</p>
+            <div class="d-flex flex-column">
+                <p class="m-0">Article le plus cher : {{ maxPrix[0][1] }}</p>
+                <p class="m-0">Prix : {{ maxPrix[0][0] }}€</p>
+            </div>
+            <div class="d-flex flex-column">
+                <p class="m-0">Article le moins cher : {{ minPrix[0][1] }}</p>
+                <p class="m-0">Prix : {{ minPrix[0][0] }}€</p>
+            </div>
+            <p class="m-0">Prix moyen : {{ moyPrix }}€</p>
         {% endif %}
     </div>
 </div>

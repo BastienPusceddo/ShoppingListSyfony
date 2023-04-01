@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\DetailsArticle;
+use App\Entity\ListeCourse;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -51,11 +52,11 @@ class DetailsArticleRepository extends ServiceEntityRepository
     public function maxPrix($listeCourse):array|null
     {
         return $this->getEntityManager()->getConnection()->prepare(
-            'SELECT MAX(prix_unitaire * quantite), article.nom
-                    FROM details_article
-                    join Article on article_id=article.id
-                    WHERE liste_course_id = :id
-                    group by article.nom'
+            'SELECT prix_unitaire * quantite,article.nom
+                    FROM `details_article` 
+                    JOIN article on article_id=article.id
+                    WHERE liste_course_id = :id and (prix_unitaire * quantite) = 
+                    (SELECT MAX(prix_unitaire * quantite) FROM `details_article`);'
         )->executeQuery(['id' => $listeCourse->getId()])->fetchAllNumeric();
     }
     public function minPrix($listeCourse):array|null
@@ -67,6 +68,15 @@ class DetailsArticleRepository extends ServiceEntityRepository
                     WHERE liste_course_id = :id
                     group by article.nom'
         )->executeQuery(['id' => $listeCourse->getId()])->fetchAllNumeric();
+    }
+    public function moyPrix($listeCourse):float|null
+    {
+        return $this->getEntityManager()->getConnection()->prepare(
+            'SELECT ROUND(sum(prix_unitaire * quantite)/SUM(quantite),2)
+                    FROM details_article
+                    join Article on article_id=article.id
+                    WHERE liste_course_id = :id'
+        )->executeQuery(['id' => $listeCourse->getId()])->fetchOne();
     }
 
 //    /**
@@ -93,4 +103,10 @@ class DetailsArticleRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function deleteByListeCourse(ListeCourse $listeCourse)
+    {
+        $this->getEntityManager()->getConnection()->prepare(
+            'DELETE FROM details_article WHERE liste_course_id = :id'
+        )->execute(['id' => $listeCourse->getId()]);
+    }
 }
