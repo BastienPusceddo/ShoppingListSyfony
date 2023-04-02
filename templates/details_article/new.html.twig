@@ -3,9 +3,11 @@
 {% block title %}New DetailsArticle{% endblock %}
 
 {% block body %}
-    <h1>Create new DetailsArticle</h1>
-
-    {{ include('details_article/_form.html.twig') }}
-
-    <a href="{{ path('app_liste_article',{"id":id}) }}">back to list</a>
+    {{ include('utilitaire/header.html.twig') }}
+    <div class="d-flex justify-content-sm-around align-items-center flex-column bg-primary rounded p-4 text-white">
+        <h1>Ajouter un article à votre liste</h1>
+        {{ include('details_article/_form.html.twig') }}
+        <a class="pulse text-info mb-2" href="{{ path('app_liste_article',{"id":id}) }}">back to list</a>
+    </div>
+    {{ include('utilitaire/footer.html.twig') }}
 {% endblock %}

@@ -6,13 +6,10 @@
     {#    header#}
     {{ include('utilitaire/header.html.twig') }}
 
-    <div class=" vh-75 mt-5 d-flex flex-column  justify-content-center align-items-center">
-        <div class="px-5 pb-5 pt-2 d-flex flex-column  justify-content-center align-items-center  rounded w-25 bg-primary text-white">
-            <h1>Create new ListeCourse</h1>
-            {{ include('liste_course/_form.html.twig') }}
-
-            <a class="pulse text-info mb-2" href="{{ path('app_home') }}">back to list</a>
-        </div>
+    <div class="p-3 d-flex flex-column  justify-content-center align-items-center  rounded bg-primary text-white d-flex align-items-center">
+        <h1>Create new ListeCourse</h1>
+        {{ include('liste_course/_form.html.twig') }}
+        <a class="pulse text-info mb-2" href="{{ path('app_home') }}">back to list</a>
     </div>
 
     {#    footer#}

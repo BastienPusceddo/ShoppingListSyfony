@@ -21,11 +21,13 @@ class DetailsArticleController extends AbstractController
         $maxPrix = $detailsArticleRepository->maxPrix($listeCourse);
         $minPrix = $detailsArticleRepository->minPrix($listeCourse);
         $moyPrix = $detailsArticleRepository->moyPrix($listeCourse);
+        $prixTotalParType = $detailsArticleRepository->prixTotalParType($listeCourse);
         return $this->render('details_article/index.html.twig', [
             'minPrix' => $minPrix,
             'maxPrix' => $maxPrix,
             'totalPrix' => $totalPrix,
             'moyPrix' => $moyPrix,
+            'prixTotalParType' => $prixTotalParType,
             'listeCourse' => $listeCourse
         ]);
     }
