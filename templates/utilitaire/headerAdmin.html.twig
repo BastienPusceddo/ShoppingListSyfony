@@ -1,4 +1,4 @@
-<header class="p-3 bg-dark text-white">
+<header class="p-3 bg-dark w-100">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <img class="bi me-2" width="60" height="42" alt="logoPrincipale2" src="/images/logoPrincipale2.png">
@@ -7,10 +7,8 @@
                 <li><a href="{{ path('admin_article_index') }}" class="nav-link px-2 text-white">Articles</a></li>
                 <li><a href="{{ path('admin_type_index') }}" class="nav-link px-2 text-white">Types</a></li>
             </ul>
-
-
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2" href=""><a class="nav-link px-2 text-white" href="{{ path('app_logout') }}">Logout</a></button>
+                <button type="button" class="btn btn-outline-light me-2" href=""><a class="nav-link px-2" href="{{ path('app_logout') }}">Logout</a></button>
             </div>
         </div>
     </div>

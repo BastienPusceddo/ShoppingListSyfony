@@ -6,8 +6,8 @@
 
 
 
-    {{ form_start(registrationForm, {'attr': {'class': 'vh-100 d-flex flex-column p-5 justify-content-center align-items-center'}}) }}
-<div class="d-flex flex-column p-3 justify-content-center align-items-center  rounded w-50 bg-primary text-white">
+    {{ form_start(registrationForm) }}
+<div class="d-flex flex-column p-3 justify-content-center align-items-center  rounded bg-primary text-white">
     <h1 class="h3 mb-3 font-weight-normal">Register</h1>
     {{ form_row(registrationForm.email, {'attr': {'class': 'form-control px-5'}}) }}
         {{ form_row(registrationForm.nom , {'attr': {'class': 'form-control px-5'}}) }}

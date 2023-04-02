@@ -4,20 +4,16 @@
 
 {% block body %}
     {{ include('utilitaire/headerAdmin.html.twig') }}
-<div class="homeContent w-100 h-100">
-    <div class="d-flex flex-column align-items-center justify-content-center p-5 h-100">
-        <div class="d-flex flex-row justify-content-start align-items-center w-100">
-            <h2>Hello {{ user.prenom}} {{user.nom }}!</h2>
-        </div>
-        <div class="d-flex flex-column justify-content-center py-4 px-5 align-items-center h-50 shadow">
-            <h3>Que voulez-vous gérer ?</h3>
-            <div class="d-flex flex-row justify-content-evenly w-100">
-                <a href="{{ path("admin_article_index") }}" class="btn btn-primary">Article</a>
-                <a href="{{ path("admin_type_index") }}" class="btn btn-primary">Type d'Article</a>
-            </div>
+<div class="p-2 w-100 h-100 d-flex justify-content-sm-around align-items-center flex-column">
+    <h1 class="text-primary">Hello {{ user.prenom}} {{user.nom }}!</h1>
+    <div class="d-flex flex-column justify-content-sm-around p-3 align-items-center h-50 shadow w-25">
+        <h3>Que voulez-vous gérer ?</h3>
+        <div class="d-flex flex-row justify-content-evenly w-100">
+            <a href="{{ path("admin_article_index") }}" class="btn btn-primary">Article</a>
+            <a href="{{ path("admin_type_index") }}" class="btn btn-primary">Type d'Article</a>
         </div>
     </div>
 </div>
 
-    {{ include('utilitaire/footer.html.twig') }}
+    {{ include('utilitaire/footerAdmin.html.twig') }}
 {% endblock %}
