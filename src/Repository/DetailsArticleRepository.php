@@ -44,7 +44,7 @@ class DetailsArticleRepository extends ServiceEntityRepository
         return $this->getEntityManager()->getConnection()->prepare(
             'SELECT SUM(prix_unitaire * quantite) 
                     FROM details_article 
-                    join Article on article_id=article.id
+                    join article on article_id=article.id
                     WHERE liste_course_id = :id'
             )->executeQuery(['id' => $listeCourse->getId()])->fetchOne();
     }
@@ -80,9 +80,21 @@ class DetailsArticleRepository extends ServiceEntityRepository
         return $this->getEntityManager()->getConnection()->prepare(
             'SELECT ROUND(sum(prix_unitaire * quantite)/SUM(quantite),2)
                     FROM details_article
-                    join Article on article_id=article.id
+                    join article on article_id=article.id
                     WHERE liste_course_id = :id'
         )->executeQuery(['id' => $listeCourse->getId()])->fetchOne();
+    }
+
+    function prixTotalParType($listeCourse):array|null
+    {
+        return $this->getEntityManager()->getConnection()->prepare(
+            'SELECT ROUND(sum(prix_unitaire * quantite),2), type.nom
+                    FROM details_article
+                    join article on article_id=article.id
+                    join type on type_id=type.id
+                    WHERE liste_course_id = :id
+                    GROUP BY type.nom'
+        )->executeQuery(['id' => $listeCourse->getId()])->fetchAllNumeric();
     }
 
 //    /**
