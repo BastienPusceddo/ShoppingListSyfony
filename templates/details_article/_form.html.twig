@@ -1,4 +1,14 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <label for="article" class="d-flex flex-row justify-content-center align-items-center">
+        Article
+        {{ form_widget(form.article,{'attr': {'class': 'form-control'}}) }}
+    </label>
+    <label for="nom" class="d-flex flex-row justify-content-center align-items-center">
+        Quantité
+        {{ form_widget(form.quantite,{'attr': {'class': 'form-rangeType'}}) }}
+    </label>
+    <label for="nom" class="d-flex flex-row justify-content-center align-items-center">
+        Est important
+        {{ form_widget(form.estImportant,{'attr': {'class': 'form-check'}}) }}
     <button class="btn btn-secondary">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

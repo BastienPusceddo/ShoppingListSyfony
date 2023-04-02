@@ -4,7 +4,7 @@
 
 {% block body %}
     {{ include('utilitaire/header.html.twig') }}
-    <div class="bg-primary rounded p-4 text-white">
+    <div class="d-flex justify-content-sm-around align-items-center flex-column bg-primary rounded p-4 text-white">
         <h1>Ajouter un article à votre liste</h1>
         {{ include('details_article/_form.html.twig') }}
         <a class="pulse text-info mb-2" href="{{ path('app_liste_article',{"id":id}) }}">back to list</a>
