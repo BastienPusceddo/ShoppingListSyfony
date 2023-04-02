@@ -5,13 +5,10 @@
 {% block body %}
 
     {{ include('utilitaire/header.html.twig') }}
-<div class="d-flex justify-content-sm-between align-items-center flex-column w-75 m-5 p-3 align-items-center card border-0  shadow">
+<div class="d-flex justify-content-sm-between align-items-sm-start flex-column w-75 m-5 p-3 align-items-center card border-0  shadow">
+    <a type="button" class="btn btn-primary" href="{{ path('app_home') }}">Retour</a>
     <div class="d-flex justify-content-sm-between align-items-center w-75">
         <h1 class="text-primary">{{ listeCourse.nom }}</h1>
-        <div class="d-flex justify-content-sm-around align-items-center w-50">
-            <a type="button" class="btn btn-primary" href="{{ path('app_details_article_new',{"id":listeCourse.id})}}">Ajouter un article</a>
-            <a type="button" class="btn btn-primary" href="{{ path('app_home') }}">Retour</a>
-        </div>
     </div>
     <div class="d-flex justify-content-sm-around align-items-center w-100">
         <table class="table bg-primary-subtle m-0 w-50">
@@ -21,7 +18,7 @@
                 <th scope="col">Quantité</th>
                 <th scope="col">important </th>
                 <th scope="col">Acheter</th>
-                <th scope="col"></th>
+                <th scope="col"><a type="button" class="btn btn-outline-primary" href="{{ path('app_details_article_new',{"id":listeCourse.id})}}"><i class="bi bi-plus"></i></a></th>
             </tr>
             {% for article in listeCourse.detailsArticles %}
                 <tr>

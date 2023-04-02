@@ -24,8 +24,8 @@
                     <tr>
                         <td>{{ article.nom }}</td>
                         <td>
-                            <a href="{{ path('admin_article_show', {'id': article.id}) }}" class="btn btn-primary">Détail</a>
-                            <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="btn btn-primary">Modifier</a>
+                            <a href="{{ path('admin_article_show', {'id': article.id}) }}" class="btn btn-outline-primary"><i class="bi bi-info-circle"></i></a>
+                            <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="btn btn-outline-primary"><i class="bi bi-pencil"></i></a>
                         </td>
                     </tr>
                 {% else %}
