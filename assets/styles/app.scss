@@ -7,8 +7,6 @@ $info :#9E8FB2;
 
 @import "~bootstrap/scss/bootstrap";
 
-.card-img-top {
-  width: 100%;
-  height: 40vh;
+.card-img {
   object-fit: cover;
 }
