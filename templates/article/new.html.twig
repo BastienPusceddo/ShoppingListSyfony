@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Article{% endblock %}
+{% block title %}Nouveau{% endblock %}
 
 {% block body %}
-    <h1>Create new Article</h1>
+    {{ include('utilitaire/headerAdmin.html.twig') }}
 
+<div class="d-flex flex-column pt-3 justify-content-center align-items-center  rounded  bg-primary text-white p-4">
+    <h1>Nouvel Article</h1>
     {{ include('article/_form.html.twig') }}
+    <a href="{{ path('admin_article_index') }}" class="pulse text-info mb-2">Retour</a>
+</div>
 
-    <a href="{{ path('app_article_index') }}">back to list</a>
+    {{ include('utilitaire/footerAdmin.html.twig') }}
 {% endblock %}

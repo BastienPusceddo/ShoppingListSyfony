@@ -1,0 +1,12 @@
+
+$primary:#2A7F62;
+$secondary:#272932;
+$warning:#194D3C;
+$info :#9E8FB2;
+
+
+@import "~bootstrap/scss/bootstrap";
+
+.card-img {
+  object-fit: cover;
+}

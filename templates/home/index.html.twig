@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HomeController{% endblock %}
+
+{% block body %}
+{#    header#}
+    {{ include('utilitaire/header.html.twig') }}
+
+<div class="d-flex flex-column p-5 h-100 w-100">
+    <div class="d-flex flex-row justify-content-sm-between align-items-center w-100">
+        <h2 class="text-primary">Vos listes</h2>
+    </div>
+    <div class="card border-0  shadow">
+        <table class="table bg-primary-subtle m-0 ">
+            {% if user.listesDeCourses|length != 0 %}
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom liste</th>
+                    <th scope="col">Outils</th>
+                </tr>
+                {% for liste_course in user.listesDeCourses %}
+                    {% set counter = ( counter | default(0) ) + 1 %}
+                    <tr>
+                        <th scope="row">{{ counter }}</th>
+                        <td>{{ liste_course.nom }}</td>
+                        <td>
+                            <a href="{{ path('app_liste_course_edit',{"id":liste_course.id}) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-tools"></i></a>
+                            <a href="{{ path('app_liste_article', {"id":liste_course.id}) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-cart4"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+            <tr>
+                <td>Aucune liste pour le moment</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+</div>
+
+{#    footer#}
+    {{ include('utilitaire/footer.html.twig') }}
+
+{% endblock %}

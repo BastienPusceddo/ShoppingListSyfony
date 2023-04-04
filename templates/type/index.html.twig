@@ -1,35 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Type index{% endblock %}
+{% block title %}Type{% endblock %}
 
 {% block body %}
-    <h1>Type index</h1>
+    {{ include('utilitaire/headerAdmin.html.twig') }}
+<div class="homeContent w-100 h-100">
+    <div class="d-flex flex-column p-5 h-100">
+        <h1>Liste des types</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for type in types %}
-            <tr>
-                <td>{{ type.id }}</td>
-                <td>{{ type.nom }}</td>
-                <td>
-                    <a href="{{ path('app_type_show', {'id': type.id}) }}">show</a>
-                    <a href="{{ path('app_type_edit', {'id': type.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for type in types %}
+                <tr>
+                    <td>{{ type.id }}</td>
+                    <td>{{ type.nom }}</td>
+                    <td>
+                        <a href="{{ path('admin_type_edit', {'id': type.id}) }}" class="btn btn-outline-primary"><i class="bi bi-pencil"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Aucun type</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_type_new') }}">Create new</a>
+        <div>
+            <a href="{{ path('admin_type_new') }}" class="btn btn-primary">Nouveau type</a>
+            <a href="{{ path('admin_index') }}" class="btn btn-primary">Retour</a>
+        </div>
+    </div>
+</div>
+    {{ include('utilitaire/footerAdmin.html.twig') }}
 {% endblock %}

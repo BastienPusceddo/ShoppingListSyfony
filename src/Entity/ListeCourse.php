@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ListeCourseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ListeCourseRepository::class)]
@@ -18,19 +19,19 @@ class ListeCourse
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\ManyToOne(inversedBy: 'listeCourses')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Utilisateur $utilisateurs = null;
-
     #[ORM\OneToMany(mappedBy: 'listeCourse', targetEntity: DetailsArticle::class)]
     private Collection $detailsArticles;
 
     #[ORM\ManyToOne(inversedBy: 'listesDeCourses')]
     private ?Utilisateur $utilisateur = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
     public function __construct()
     {
         $this->detailsArticles = new ArrayCollection();
+        $this->date = new \DateTime('now');
     }
 
     public function getId(): ?int
@@ -46,18 +47,6 @@ class ListeCourse
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getUtilisateurs(): ?Utilisateur
-    {
-        return $this->utilisateurs;
-    }
-
-    public function setUtilisateurs(?Utilisateur $utilisateurs): self
-    {
-        $this->utilisateurs = $utilisateurs;
 
         return $this;
     }
@@ -100,6 +89,18 @@ class ListeCourse
     public function setUtilisateur(?Utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

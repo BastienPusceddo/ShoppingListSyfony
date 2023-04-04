@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DetailsArticle{% endblock %}
+
+{% block body %}
+    <h1>DetailsArticle</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ details_article.id }}</td>
+            </tr>
+            <tr>
+                <th>Quantité</th>
+                <td>{{ details_article.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ details_article.prix }}</td>
+            </tr>
+            <tr>
+                <th>EstAcheté</th>
+                <td>{{ details_article.estAchete ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>EstImportant</th>
+                <td>{{ details_article.estImportant ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_details_article_index') }}">back to list</a>
+
+    <a href="{{ path('app_details_article_edit', {'id': details_article.id}) }}">edit</a>
+
+    {{ include('details_article/_delete_form.html.twig') }}
+{% endblock %}

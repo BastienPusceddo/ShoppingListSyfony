@@ -14,33 +14,36 @@ class DetailsArticle
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $quantité = null;
+    private ?int $quantite = null;
 
     #[ORM\Column]
     private ?float $prix = null;
 
     #[ORM\Column]
-    private ?bool $estAcheté = null;
+    private ?bool $estAchete = null;
 
-    #[ORM\ManyToOne(inversedBy: 'detailsArticles')]
+    #[ORM\ManyToOne()]
     private ?Article $article = null;
 
     #[ORM\ManyToOne(inversedBy: 'detailsArticles')]
     private ?ListeCourse $listeCourse = null;
+
+    #[ORM\Column]
+    private ?bool $estImportant = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getQuantité(): ?int
+    public function getQuantite(): ?int
     {
-        return $this->quantité;
+        return $this->quantite;
     }
 
-    public function setQuantité(int $quantité): self
+    public function setQuantite(int $quantite): self
     {
-        $this->quantité = $quantité;
+        $this->quantite = $quantite;
 
         return $this;
     }
@@ -57,14 +60,14 @@ class DetailsArticle
         return $this;
     }
 
-    public function isEstAcheté(): ?bool
+    public function isEstAchete(): ?bool
     {
-        return $this->estAcheté;
+        return $this->estAchete;
     }
 
-    public function setEstAcheté(bool $estAcheté): self
+    public function setEstAchete(bool $estAchete): self
     {
-        $this->estAcheté = $estAcheté;
+        $this->estAchete = $estAchete;
 
         return $this;
     }
@@ -89,6 +92,23 @@ class DetailsArticle
     public function setListeCourse(?ListeCourse $listeCourse): self
     {
         $this->listeCourse = $listeCourse;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->article->getNom();
+    }
+
+    public function isEstImportant(): ?bool
+    {
+        return $this->estImportant;
+    }
+
+    public function setEstImportant(bool $estImportant): self
+    {
+        $this->estImportant = $estImportant;
 
         return $this;
     }

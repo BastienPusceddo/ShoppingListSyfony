@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    {{ include('utilitaire/headerAdmin.html.twig') }}
+<div class="p-2 w-100 h-100 d-flex justify-content-sm-around align-items-center flex-column">
+    <h1 class="text-primary">Hello {{ user.prenom}} {{user.nom }}!</h1>
+    <div class="d-flex flex-column justify-content-sm-around p-3 align-items-center h-50 shadow w-25">
+        <h3>Que voulez-vous gérer ?</h3>
+        <div class="d-flex flex-row justify-content-evenly w-100">
+            <a href="{{ path("admin_article_index") }}" class="btn btn-primary">Article</a>
+            <a href="{{ path("admin_type_index") }}" class="btn btn-primary">Type d'Article</a>
+        </div>
+    </div>
+</div>
+
+    {{ include('utilitaire/footerAdmin.html.twig') }}
+{% endblock %}

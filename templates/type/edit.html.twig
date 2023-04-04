@@ -1,13 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Type{% endblock %}
+{% block title %}Modification{% endblock %}
 
 {% block body %}
-    <h1>Edit Type</h1>
+    {{ include('utilitaire/headerAdmin.html.twig') }}
+<div class="m-5 h-100 d-flex flex-column  justify-content-center align-items-center">
+    <div class="d-flex flex-column p-1 justify-content-center align-items-center  rounded bg-primary text-white">
+        <h1>Modification du type</h1>
 
-    {{ include('type/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('type/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_type_index') }}">back to list</a>
+        {{ include('type/_delete_form.html.twig') }}
 
-    {{ include('type/_delete_form.html.twig') }}
+        <a href="{{ path('admin_type_index') }}" class="pulse text-info mb-2">Retour</a>
+
+    </div>
+</div>
+    {{ include('utilitaire/footerAdmin.html.twig') }}
 {% endblock %}

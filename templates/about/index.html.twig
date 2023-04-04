@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AboutController!{% endblock %}
+
+{% block body %}
+
+    {#    header #}
+    {{ include('utilitaire/header.html.twig') }}
+    <div class="card border-0 shadow align-items-center justify-content-center w-75 m-5 p-5">
+        <h1>A propos</h1>
+        <p>
+            Nous sommes une startup passionnée par la création de solutions numériques pour faciliter la vie
+            quotidienne des gens. Notre produit phare est un site web de liste de courses qui vous permet
+            de créer et de gérer facilement des listes de courses en ligne.
+        </p>
+        <p>
+            Notre équipe se compose de développeurs expérimentés, de designers talentueux et de professionnels
+            de la gestion de projet, tous déterminés à créer une expérience utilisateur exceptionnelle pour
+            nos utilisateurs.
+        </p>
+        <p>
+            Nous sommes convaincus que notre site web de liste de courses peut aider les gens à économiser du
+            temps et de l'argent en leur permettant de mieux planifier leurs achats. Nous croyons également
+            qu'il peut aider les familles à mieux communiquer et à travailler ensemble pour atteindre leurs
+            objectifs de consommation.
+        </p>
+        <p>
+            Notre objectif est de rendre la planification des courses aussi simple et agréable que possible pour nos
+            utilisateurs. Nous sommes impatients de vous accompagner dans votre parcours d'achat et de vous aider
+            à tirer le meilleur parti de notre site web de liste de courses. Merci de nous faire confiance!
+        </p>
+        <h3> Nos profils</h3>
+            <div class=" border-0 shadow d-flex justify-content-between align-items-center rounded mb-3">
+                <img src="/images/image_bastien.jpg" class="card-img w-25 me-2" alt="Bastien">
+                <div class="d-flex flex-column h-100 w-100 align-items-center justify-content-sm-around">
+                    <h3 class="w-50">Bastien Pusceddo</h3>
+                    <p class="text-muted">Developpeur: bebe front-end / back-end </p>
+                    <p>Master CSS (Spoiler: NON)</p>
+                    <p>bastien.pusceddo@etu.univ-lyon1.fr</p>
+                    <a href="mailto:bastien.pusceddo@etu.univ-lyon1.fr"><button class="btn btn-primary btn-outline-light">Contact</button></a>
+                </div>
+            </div>
+            <div class=" border-0 shadow d-flex justify-content-between align-items-center rounded mb-3">
+                <img src="/images/image_francois.jpg" class="card-img w-25 me-2" alt="François">
+                <div class="d-flex flex-column h-100 w-100 align-items-center justify-content-sm-around">
+                    <h3>François Graux</h3>
+                    <p class="text-muted">Developper: front-end/ bebe back-end</p>
+                    <p>PHP is love PHP is life</p>
+                    <p>francois.graux@etu.univ-lyon1.fr</p>
+                    <a href="mailto:francois.graux@etu.univ-lyon1.fr"><button  class="btn btn-primary btn-outline-light w-100">  Contact</button> </a>
+                </div>
+            </div>
+        <div class=" border-0 shadow d-flex justify-content-between align-items-center rounded mb-3">
+            <img src="/images/image_valentin.jpeg" class="card-img w-25 me-2" alt="François">
+            <div class="d-flex flex-column h-100 w-100 align-items-center justify-content-sm-around">
+                <h3>Valentin Segalla</h3>
+                <p class="text-muted">Developper: bebe front-end/  back-end</p>
+                <p>developper one line</p>
+                <p>valentin.segalla@etu.univ-lyon1.fr</p>
+                <a href="mailto:valentin.segalla@etu.univ-lyon1.fr"><button  class="btn btn-primary btn-outline-light w-100">  Contact</button> </a>
+            </div>
+        </div>
+    </div>
+
+    {#    footer #}
+    {{ include('utilitaire/footer.html.twig') }}
+{% endblock %}

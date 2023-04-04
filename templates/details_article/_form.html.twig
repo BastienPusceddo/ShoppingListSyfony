@@ -1,0 +1,15 @@
+{{ form_start(form, {'attr':{'class':'d-flex flex-column align-items-center w-100'}})  }}
+    <label for="article" >
+        Article :
+        {{ form_widget(form.article,{'attr': {'class': 'form-select'}}) }}
+    </label>
+    <label for="nom" >
+        Quantité :
+        {{ form_widget(form.quantite,{'attr': {'class': 'form-control'}}) }}
+    </label>
+    <label for="nom">
+        Est important :
+        {{ form_widget(form.estImportant) }}
+    </label>
+    <button class="btn btn-secondary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
